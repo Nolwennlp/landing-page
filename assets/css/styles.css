@@ -1,0 +1,253 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #15181A;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+section {
+    min-height: 100vh;
+    position: relative;
+    width: 100% !important;
+    min-width: 1000px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+section:nth-of-type(1){
+    background:whitesmoke;
+    height:1200px;
+}
+section:nth-of-type(2){
+    background:black;
+    height:1200px;
+}
+
+#story>div:nth-of-type(1) {
+    background: url(../img/pexels-photo-66373.jpeg) 50% 0 no-repeat fixed;
+    height: 1500px;
+    position:absolute;
+    width:100%;
+}
+
+#story>div:nth-of-type(2) {
+    background: url(../img/14175498771.png) 50% 0 no-repeat fixed;
+    height: 1200px;
+    position:absolute;
+    width:100%;
+}
+
+#first>div:nth-of-type(1){
+    background: url(../img/pexels-photo-108055.jpeg) 50% 0 no-repeat fixed;
+    margin: 0;
+    height: 1400px;
+    position:absolute;
+    top:0;left:0;
+    width:100%;
+}
+
+
+section h1{
+    width:100%;
+    font-size:65px;
+    margin-bottom:14px;
+    top:20%;
+}
+
+section p{
+    color:#ffffff;
+}
+section article{
+    position:absolute;
+    top:30%;
+    left:10%;
+    width:50%;
+    z-index:4;
+}
+
+.acces{
+    position:absolute;
+    top:40%;
+    left:25%;
+    width:50%;
+    z-index:4;
+    background-color: rgba(132, 244, 254, 0.2);
+    height:200px;
+    padding-top: 3%;
+}
+
+.acces h2 {
+    text-align: center;
+    font-size: 40px;
+    font-weight: initial;
+    color: #ffffff;
+    padding-bottom: 20px;
+}
+
+
+#newsletter {
+
+}
+
+section article h1 {
+    padding-bottom: 10%;
+    color: #ffffff;
+
+}
+
+.parallax-item{
+    position:absolute;
+    z-index:5;
+    top:40px;
+    left:400px;
+}
+
+
+/* POPUP */
+
+label {
+    color: #000;
+}
+
+.popup {
+}
+
+.popupBtn-input {
+    display:none;
+}
+
+.popupBtn {
+    background-color: lightgray;
+    display: block;
+    width: 60%;
+    height: 30px;
+    position: relative;
+    text-align: center;
+    border-radius: 10px;
+    transition: background-color .2s, color .2s;
+    padding-top: 4px;
+    left:20%;
+}
+.popupBtn:hover {
+    background:dimgray;
+    color:white;
+}
+
+.popupBtn-input:not(checked) ~ .popupContainer {
+    pointer-events:none;
+    opacity:0;
+    top:55%;
+    transition:width .2s,
+    height .2s,
+    opacity .2s,
+    top .2s,
+    display 0s linear .5s;
+    transition-delay: .0s;
+}
+.popupBtn-input:checked ~ .popupContainer {
+    pointer-events:auto;
+    display:block;
+    opacity:1;
+    width:50%;
+    height:50%;
+    top: 50%;
+    transition-delay: .5s;
+}
+.popupBtn-close {
+    z-index:5;
+    background-color:#999;
+    top:-10px;
+    position:fixed;
+    display:block;
+    right:-10px;
+    box-shadow: .1em .3em .1em rgba(0,0,0,.5);
+    border-radius:.25em;
+    padding:3px 9px;
+}
+.popupBtn-close:hover {
+    background-color:#ccc;
+    color:black;
+}
+.hover-popup {
+    pointer-events:none;
+    position:fixed;
+    display:block;
+    top:-2.5em;
+    width:7em;
+}
+.hover-popup-content {
+    background-color:rgba(0,0,0,.75);
+    color:white;
+    padding:.1em .5em;
+    transform:translateX(-50%);
+}
+.popupBtn-input:not(checked) ~ .popupBtn-close {
+    display:none;
+}
+.popupBtn-input:checked ~ .popupBtn-close {
+    display:block;
+}
+
+.blackout {
+    width:100%;
+    height:100%;
+    background-color:black;
+    opacity:.1;
+    z-index:3;
+    pointer-events: none;
+}
+
+.popupBtn-input:not(checked) ~ .blackout {
+    /*display:none;*/
+    opacity:0;
+    transition:opacity .5s;
+    transition-delay:.25s;
+}
+.popupBtn-input:checked ~ .blackout {
+    display:block;
+    opacity:.80;
+    pointer-events:auto;
+    transition-delay:0s;
+}
+
+.popupContainer {
+    background-color:white;
+    padding: .5em 1em;
+    position:fixed;
+    left:50%;
+    top:50%;
+    width:50%;
+    height:50%;
+    display:block;
+    transform: translate(-50%,-50%);
+    box-shadow: .5em .5em 1em rgba(0,0,0,.25);
+    z-index:1;
+    border-radius:5px;
+    color: black;
+}
+
+.popupContent {
+    width: 100%;
+    height: 96%;
+    overflow-y: auto;
+}
+
+#textFlow {
+    height:75%;
+}
+
+/* VIDEO */
+
+video {
+    min-width: 100%;
+    min-height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}

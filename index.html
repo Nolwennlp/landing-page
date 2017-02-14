@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+</head>
+<body>
+<section id="first">
+    <article>
+        <h1>Plongez au coeur des océans</h1>
+        <h2> National géographie & Playstation vr</h2>
+        <p>
+            La collaboration entre playsation vr et National géographie a donné naissance au jeu Ocean Live et vous offre la possibilité de plonger à la découverte des océans depuis votre salon.
+        </p>
+    </article>
+    <div class="parallax" data-velocity="-.3"></div>
+</section>
+<section id="story">
+    <article>
+        <h1>Partez à l'aventure </h1>
+        <p>
+            <strong>OCEAN LIVE</strong> <br/>
+            Plongez au coeur de l'océan et enfoncez-vous dans les profondeurs
+            pour contempler la faune et la flore aquatique.
+            Au cours de votre périple, admirez les splendeurs de la vie marine,
+            percez un secret perdu et affrontez des dangers extrêmes.
+            </p>
+    </article>
+    <div class="parallax" data-velocity="-.1">
+
+    </div>
+    <div class="parallax" data-velocity="-.5" data-fit="525"></div>
+</section>
+<section id="newsletter">
+   <!-- <div class="video">
+        <div class="video" id="muteYouTubeVideoPlayer">
+        </div>
+    </div>-->
+    <video autoplay loop>
+        <source src="https://www.dropbox.com/s/jfedkubknk401ym/gopro-hd-scuba-diving-maldives.mp4?dl=0" type="video/mp4">
+        <source src="https://www.dropbox.com/s/qti0828smj3zzn9/gopro-hd-scuba-diving-maldives.webm?dl=0" type="video/webm">
+        Your browser does not support the <code>video</code> element.
+    </video>
+    <article class="acces">
+        <div class="newsletter">
+            <h2 class="">Vous souhaitez en savoir plus ?</h2>
+            <div class="popup" >
+                <input type="checkbox" value = "" id="testButton" class="popupBtn-input"/>
+                <label for="testButton" class="popupBtn-label" id="myButton">
+                    <div class="popupBtn" >
+                        Inscrivez-vous à notre newsletter
+                    </div>
+                </label>
+                <div class="popupContainer">
+                    <label for="testButton" class="popupBtn-close">
+                        X
+                    </label>
+                    <div class="popupContent">
+                        <form name="newsletterForm" id="newsletterForm">
+                            <p>
+                                <label>Nom : </label>
+                                <input id="name" type="text" >
+                            </p>
+                            <p>
+                                <label>Prénom :</label>
+                                <input id="firstName" type="text" >
+                            </p>
+                            <p>
+                                <label>Email :</label>
+                                <input id="email"type="text" placeholder="me@example.com" onfocus="this.placeholder = ''" onblur="this.placeholder = 'me@example.com'" required>
+                            </p>
+                            <p>
+                                <label>Message :</label>
+                                <input id="message" type="text">
+                            </p>
+                            <button id="newsletterSubmit"> Enregistrer </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="blackout"></div>
+            </div>
+        </div>
+    </article>
+    <div class="connection">
+        <button id="googleSign">Google Signin</button>
+    </div>
+</section>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+<script src="js/main.js"></script>
+<script src="js/jquery.scrolly.js"></script>
+<script async src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>
