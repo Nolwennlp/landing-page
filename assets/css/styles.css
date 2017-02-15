@@ -243,11 +243,26 @@ label {
 
 /* VIDEO */
 
-video {
-    min-width: 100%;
-    min-height: 100%;
+.video {
+    min-width: 100vw;
     position: fixed;
     left: 0;
     top: 0;
     z-index: -1;
+}
+
+.video::before {
+    display: inline-block;
+    content: '';
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+
+.video iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
 }

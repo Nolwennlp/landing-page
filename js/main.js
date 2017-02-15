@@ -17,54 +17,53 @@ $(function () {
 
     var worker = new Worker("js/workers.js");
 
-/*    // CONNECTION GOOGLE
+    /*  // CONNECTION GOOGLE
 
-    var provider = new firebase.auth.GoogleAuthProvider();
-    
-
-    $('.connection').on('click', "#googleSign",function () {
-        googleSignin();
-
-    });
-    $('.connection').on('click', "#googleSignOut", function () {
-        googleSignout();
-
-    });
-
-    function googleSignin() {
+     var provider = new firebase.auth.GoogleAuthProvider();
 
 
-        firebase.auth()
-            .signInWithPopup(provider).then(function(result) {
-            var token = result.credential.accessToken;
-            var user = result.user;
-        }).catch(function(error) {
-            var errorCode = error.code;
-            var errorMessage = error.message;
+     $('.connection').on('click', "#googleSign",function () {
+     googleSignin();
 
-            console.log(error.code)
-            console.log(error.message)
-        });
-    }*/
+     });
+     $('.connection').on('click', "#googleSignOut", function () {
+     googleSignout();
+
+     });
+
+     function googleSignin() {
 
 
-// FORMULAIRE
-    
-    //Onsubmit
-    var newsletterSubmit = document.getElementById("newsletterSubmit");
-    newsletterSubmit.addEventListener('click', function (e) {
+     firebase.auth()
+     .signInWithPopup(provider).then(function(result) {
+     var token = result.credential.accessToken;
+     var user = result.user;
+     }).catch(function(error) {
+     var errorCode = error.code;
+     var errorMessage = error.message;
+
+     console.log(error.code)
+     console.log(error.message)
+     });
+     }*/
+
+    // FORMULAIRE
+
+    //Au click sur le bouton submit
+    var newsletterSubmit = $("#newsletterSubmit");
+    newsletterSubmit.on('click', function(e) {
         e.preventDefault();
         var formId = Math.round(Math.random()*3600),
-            name = document.getElementById("name").value,
-            firstName = document.getElementById("firstName").value,
-            email = document.getElementById("email").value,
-            message = document.getElementById("message").value;
+            name = $("#name").val(),
+            firstName = $("#firstName").val(),
+            email = $("#email").val(),
+            message = $("#message").val();
 
         writeCatData(formId,name,firstName,email,message);
     });
 
 
-    //Ajouter des clicks avec le temps
+    //Envoi du form dans firebase
     function writeCatData(formId, name, firstName, email, message) {
         firebase.database().ref('newsletters/' + formId).set({
             name : name,
@@ -73,18 +72,8 @@ $(function () {
             message : message
         });
     }
-/*
-    var source = document.getElementById("contentTemplate").innerHTML;
-    var template = Handlebars.compile(source);
-    Handlebars.registerHelper('chats', function() {
-        var nom = Handlebars.escapeExpression(this.name),
-            age = Handlebars.escapeExpression(this.age);
 
-        return new Handlebars.SafeString(
-            "<div>Je suis "+nom+" et j'ai "+age+" ans.</div>"
-        );
-    });*/
-    //Lire dans la base
+    //Lors de changements en base
     var listNewsletters = firebase.database().ref('newsletters');
     listNewsletters.on('value', function(snapshot) {
 
@@ -94,48 +83,32 @@ $(function () {
             newslettersArray.push(newsletter);
         }
         console.log(newslettersArray);
-
-/*
-        var html = template(catsArray);
-        console.log(html)
-        document.getElementById("ntm").innerHTML = html;*/
-
-
     });
 
+    //AU CLICK SUR LA CHECKBOX NEWSLETTER
+    var currentNbPopOpened = null;
+
+    $('.popupBtn').on('click', function(e) {
+        registerPopupOpened();
+    });
+
+    var nbPopupOpened = firebase.database().ref('nbPopupOpened');
+    nbPopupOpened.on('value', function(snapshot) {
+        currentNbPopOpened = snapshot.val();
+        console.log(currentNbPopOpened)
+    });
+
+    function registerPopupOpened() {
+        if (!currentNbPopOpened) {
+            firebase.database().ref('nbPopupOpened').set(1);
+        }
+        else {
+            firebase.database().ref('nbPopupOpened').set(parseInt(currentNbPopOpened, 10) ++);
+        }
+    }
 });
 
 
 $(document).ready(function(){
     $('.parallax').scrolly({bgParallax: true});
 });
-
-
-function onYouTubeIframeAPIReady() {
-    var player;
-    player = new YT.Player('muteYouTubeVideoPlayer', {
-        videoId: 'HSiSIwPq1GA', // YouTube Video ID
-        playerVars: {
-            height: 720,
-            width: 1280,
-            autoplay: 1,        // Auto-play the video on load
-            controls: 0,        // Show pause/play buttons in player
-            showinfo: 0,        // Hide the video title
-            modestbranding: 1,  // Hide the Youtube Logo
-            loop: 1,            // Run the video in a loop
-            fs: 0,              // Hide the full screen button
-            cc_load_policy: 1, // Hide closed captions
-            iv_load_policy: 1,  // Hide the Video Annotations
-            autohide: 1,         // Hide video controls when playing
-            rel:1,
-            start: 25
-        },
-        events: {
-            onReady: function(e) {
-                e.target.mute();
-            }
-        }
-    });
-}
-
-
